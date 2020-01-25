@@ -1,0 +1,17 @@
+html
+  head
+    title User Manager
+  style
+    include style.css
+  body
+    h1 Add Users
+    form(id="userForm", action='/user', method='POST')
+      label(for="userName") User Name
+      input(type="text", id="userName", name="userName")
+      label(for="name") Name
+      input(type="text", id="name", name="name")
+      label(for="email") Email
+      input(type="email", id="email", name="email")
+      label(for="age") Age
+      input(type="number", id="age", name="age")
+      button(type="submit", value="create", name='button') Create User

@@ -1,0 +1,18 @@
+html
+  head
+    title Edit
+  style
+    include style.css
+  body
+    form(id="userForm", method='post', action='/user')
+      h1 Edit User #{userId}
+      input(type='hidden', name="userId", value=userId)
+      label(for=userName) User ID
+      input(type="text", id="userName", name="userName", value=userName)
+      label(for="name") Name
+      input(type="text", id="name", name="name", value=name)
+      label(for="email") Email
+      input(type="email", id="email", name="email", value=email)
+      label(for="age") Age
+      input(type="number", id="age", name="age", value=age)
+      button(type="submit", value="edit", name="button") Edit

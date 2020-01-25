@@ -1,0 +1,33 @@
+html
+  head
+    title User List
+    style
+      include style.css
+  body
+    h1 Users
+    button(onclick="addUser()") Add Users
+    table
+      tr
+        th User Id
+        th User Name
+        th Name
+        th Email
+        th Age
+      each user in dataSet
+        tr
+          each val in user
+            td #{val}
+          td(style="display: flex")
+            button(onclick="editClick("+user.userId+")") Edit
+            button Delete
+      else
+        tr There are no users
+
+script.
+    function editClick(userId) {
+        window.location.href = '/edit/' + userId
+    }
+    function addUser() {
+        window.location.href = '/'
+    }
+
