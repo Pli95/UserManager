@@ -7,6 +7,8 @@ const createCsvWriter = require('csv-writer')
 const csv = require('csv-parser');
 const data = [];
 
+const port = process.env.PORT || 8080;
+
 let num = 0
 
 app.use(express.json());
@@ -22,11 +24,27 @@ app.get('/', (req, res) => {
 
 app.post('/user', (req, res) => {
   if (req.body.button === 'edit') {
-    data[Number(req.body.userId)] = {userId: req.body.userId, userName: req.body.userName, name: req.body.name, email: req.body.email, age: req.body.age};
-    console.log('edit')
+    data.forEach(user => {
+      if(user.userId === req.body.userId) {
+        user.userId= req.body.userId;
+        user.userName= req.body.userName;
+        user.name= req.body.name;
+        user.email= req.body.email;
+        user.age= req.body.age;
+      }
+    })
+    // data[Number(req.body.userId)] = {userId: req.body.userId, userName: req.body.userName, name: req.body.name, email: req.body.email, age: req.body.age};
+  }
+  else if(req.body.button === 'delete') {
+    data.forEach((user, index, arr) => {
+      if (user.userId === req.body.userId) {
+        arr.splice(index, 1)
+      }
+    })
+    // data.splice(Number(req.body.userId), 1)
   }
   else {
-    let userId = num.toString()
+    let userId = num.toString();
     let csvRecord = {userId, userName: req.body.userName, name: req.body.name, email: req.body.email, age: req.body.age};
     data.push(csvRecord)
     num++
@@ -73,6 +91,8 @@ app.get('/edit/:userId', (req, res) => {
 })
 
 
-app.listen(8080, () => {
-  console.log("listening to port 8080")
+app.listen(port, () => {
+  console.log("listening to port " +port)
 });
+
+

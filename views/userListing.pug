@@ -18,10 +18,15 @@ html
           each val in user
             td #{val}
           td(style="display: flex")
-            button(onclick="editClick("+user.userId+")") Edit
-            button Delete
+            div(style='padding: 10px')
+              button(onclick=`editClick(${user.userId})`) Edit
+            form(id="deleteButton", method='post', action='/user')
+              input(type='hidden', name="button", value="delete")
+              input(type='hidden', name="userId", value=user.userId)
+              button(type="submit") Delete
       else
-        tr There are no users
+        tr
+          td(colspan="5") There are no users
 
 script.
     function editClick(userId) {
@@ -30,4 +35,14 @@ script.
     function addUser() {
         window.location.href = '/'
     }
+    // function deleteClick() {
+    //     $.ajax(
+    //         {
+    //             url: "/user",
+    //             type: "GET"
+    //         });
+    // }
+    // function deleteClick() {
+    //     window.location.href = '/user'
+    // }
 
