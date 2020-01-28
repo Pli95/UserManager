@@ -4,15 +4,15 @@ html
   style
     include style.css
   body
-    form(id="userForm", method='post', action='/user')
+    form(id="userForm", method='post', action='/user', class="center")
       h1 Edit User #{userId}
       input(type='hidden', name="userId", value=userId)
       label(for=userName) User ID
-      input(type="text", id="userName", name="userName", value=userName)
+      input(type="text", id="userName", name="userName", value=userName, required)
       label(for="name") Name
-      input(type="text", id="name", name="name", value=name)
+      input(type="text", id="name", name="name", value=name, required)
       label(for="email") Email
-      input(type="email", id="email", name="email", value=email)
+      input(type="email", id="email", name="email", value=email, required)
       label(for="age") Age
       input(type="number", id="age", name="age", value=age)
       button(type="submit", value="edit", name="button") Edit

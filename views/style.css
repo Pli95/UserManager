@@ -26,4 +26,10 @@ button {
   border-radius: 5px;
   color: white;
   font-size: 15px;
+  float: right;
+}
+
+.center {
+  width: min-content;
+  margin: auto;
 }

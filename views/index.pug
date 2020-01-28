@@ -4,14 +4,15 @@ html
   style
     include style.css
   body
-    h1 Add Users
-    form(id="userForm", action='/user', method='POST')
-      label(for="userName") User Name
-      input(type="text", id="userName", name="userName")
-      label(for="name") Name
-      input(type="text", id="name", name="name")
-      label(for="email") Email
-      input(type="email", id="email", name="email")
-      label(for="age") Age
-      input(type="number", id="age", name="age")
-      button(type="submit", value="create", name='button') Create User
+    div(class="center")
+      h1 Add Users
+      form(id="userForm", action='/user', method='POST')
+        label(for="userName") User Name
+        input(type="text", id="userName", name="userName", required)
+        label(for="name") Name
+        input(type="text", id="name", name="name", required)
+        label(for="email") Email
+        input(type="email", id="email", name="email", required)
+        label(for="age") Age
+        input(type="number", id="age", name="age")
+        button(type="submit", value="create", name='button') Create User
